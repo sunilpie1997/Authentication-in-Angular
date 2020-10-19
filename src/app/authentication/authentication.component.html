@@ -1,0 +1,30 @@
+<div class="flex-container" style="margin: 10rem 1rem;">
+
+    <ng-container *ngIf="!loginStatus">
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+  
+            <div class="form-group">
+                <label for="email_id" class="custom-text">Email</label>
+                <input type="text" class="form-control border-color" id="email_id" formControlName="userName">
+            
+            </div>
+
+            <div class="form-group">
+                <label for="pass_id" class="custom-text">Password</label>
+                <input type="password" class="form-control border-color" id="pass_id" formControlName="password">
+            
+            </div>
+
+            <button type="submit" [disabled]=!loginForm.valid class="btn custom-btn">Login</button>
+
+        </form>
+
+    </ng-container>
+
+    <ng-container *ngIf="loginStatus">
+        <button class="btn custom-btn" (click)="logout()">Logout</button>
+
+    </ng-container>
+
+</div>

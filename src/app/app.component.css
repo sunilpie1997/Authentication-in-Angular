@@ -1,0 +1,30 @@
+.navbar {
+
+    background-color:white; 
+    
+}
+
+.navlink {
+
+    padding: 1rem;
+    color:#145374;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.15rem;
+    
+  }
+
+  input[type="search"]:focus {
+
+    color: #145374;
+  }
+
+  .profile-avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding:0.5rem;
+    margin:0.5rem;
+     
+  }

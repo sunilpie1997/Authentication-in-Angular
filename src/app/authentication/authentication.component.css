@@ -1,0 +1,14 @@
+input {
+    color: #145374;
+    font-weight: 600;
+    padding: 1rem 1rem;
+    font-size: 1rem;
+    min-height: 2.5rem;
+    letter-spacing: 0.08rem;
+}
+
+
+input:focus {
+
+    color: #145374;
+  }
