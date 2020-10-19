@@ -16,10 +16,12 @@ export class AuthService {
 
   private path:String;
 
+  /* used by all components to know if user is logged in (with valid token in localStorage) */
   private static isAuthenticated=new BehaviorSubject<boolean>(AuthService.hasValidToken());
 
   constructor(private http:HttpClient) {
 
+      /* get Rest-api service 'path' */
       this.path=RestApiService.getPath();
    }
 
@@ -93,6 +95,7 @@ export class AuthService {
   }
 
 
+  /* login process initiated by user when he clicks 'login' button  */
   async login(loginUser:LoginUser)
   {
     try
@@ -105,6 +108,7 @@ export class AuthService {
     /* also store token in local storage */
     localStorage.setItem('token',tokenBody.access_token);
     let decoded=jwt_decode(tokenBody.access_token);
+    /* token expiry time */
     let exp=decoded.exp*1000;
     localStorage.setItem('exp',exp.toString());
 
@@ -112,13 +116,19 @@ export class AuthService {
     let userResponse=await this.getUser();
 
     let user:User=userResponse.body;
+
+    /* set user globally to be used by all components */
     ShareUserService.setUser(user);
+
+    /* set global authentication status */
     AuthService.isAuthenticated.next(true);
     localStorage.setItem('user',JSON.stringify(user));
     }
     catch(error)
     {
       console.log(error);
+      alert("could not login");
+
     }
   }
 

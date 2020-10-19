@@ -33,6 +33,7 @@ export class AuthenticationComponent implements OnInit{
 
   async onSubmit()
   {
+    /* remove this... */
     alert(JSON.stringify(this.loginForm.value));
 
     let loginUser:LoginUser=new LoginUser();
@@ -40,6 +41,8 @@ export class AuthenticationComponent implements OnInit{
     loginUser.setPassword(this.loginForm.get('password').value);
 
     await this.authService.login(loginUser);
+
+    /* reset form */
     this.loginForm.reset();
     
   }
